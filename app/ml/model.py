@@ -1,9 +1,8 @@
-import joblib
+import os
+import time
 import numpy as np
-from pathlib import Path
-
-import tensorflow_hub as hub
 import tensorflow as tf
+import tensorflow_hub as hub
 import preprocessing
 
 
@@ -50,21 +49,22 @@ class Model:
 
     def save(self):
         if self._model is not None:
-            joblib.dump(self._model, self._model_path)
+            ts = int(time.time())
+            self._model.save(filepath=f'{self._model_path}/{ts}', save_format='tf')
         else:
             raise TypeError("The model is not trained yet, use .train() before saving")
 
     def load(self):
         try:
-            self._model = joblib.load(self._model_path)
+            latest = str(max([int(x) for x in os.listdir(self._model_path)]))
+            self._model = tf.keras.models.load_model(f'{self._model_path}/{latest}')
         except:
             self._model = None
         return self
 
 
-model_path = Path(__file__).parent / "model.joblib"
-n_features = load_boston(return_X_y=True)[0].shape[1]
-model = Model(model_path)
+file_path = f"./img_classifier/"
+model = Model(file_path)
 
 
 def get_model():
