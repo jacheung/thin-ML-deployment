@@ -96,5 +96,5 @@ if __name__ == "__main__":
 
     model.load()
     for x in ds_test.take(1):
-        image = x[0]
-        prediction = model.predict_single_image(image)
+        img = x[0]
+        prediction = model.predict_single_image(img)
