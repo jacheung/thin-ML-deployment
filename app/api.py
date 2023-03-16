@@ -1,9 +1,10 @@
+import numpy as np
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 from typing import List
 from pydantic import BaseModel, ValidationError, validator
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
-from ml.model import Model
+from ml.model import Model, get_model
 import matplotlib.image as mpimg
 
 
@@ -11,7 +12,7 @@ router = APIRouter(prefix='/v1/sandmass')
 
 
 class PredictRequest(BaseModel):
-    data: List[List[float]]
+    data: np.ndarray
 
     @validator("data")
     def check_dimensionality(cls, v):
@@ -23,7 +24,7 @@ class PredictRequest(BaseModel):
 
 
 class PredictResponse(BaseModel):
-    data: List[float]
+    data: np.int64
 
 
 @app.post("/predict",
