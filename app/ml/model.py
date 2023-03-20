@@ -5,7 +5,6 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import tensorflow_datasets as tfds
 from app.ml import preprocessing
-import matplotlib.pyplot as plt
 
 
 class Model:
@@ -72,7 +71,7 @@ class Model:
 
 
 top_level_dir = os.path.abspath(os.path.dirname(__file__))
-file_path = f"{top_level_dir}/app/ml/img_classifier/"
+file_path = f"{top_level_dir}/img_classifier/"
 model = Model(file_path)
 
 
