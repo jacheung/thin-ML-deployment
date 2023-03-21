@@ -20,7 +20,7 @@ app = FastAPI()
 #
 #
 class PredictResponse(BaseModel):
-    data: int
+    prediction: int
 
 
 @app.post("/predict",
@@ -33,7 +33,7 @@ async def predict(file: UploadFile = File(...), model: Model = Depends(get_model
     image = np.array(Image.open(file.file))
 
     y_pred = model.predict_single_image(image=image)
-    result = PredictResponse(data=y_pred.tolist())
+    result = PredictResponse(prediction=y_pred.tolist())
     print(y_pred)
 
     return result
