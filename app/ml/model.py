@@ -92,8 +92,3 @@ if __name__ == "__main__":
     ds_train = ds_train.batch(128)
     model.train(ds_train)
     model.save()
-
-    model.load()
-    for x in ds_test.take(1):
-        img = x[0]
-        prediction = model.predict_single_image(img)

@@ -1,9 +1,14 @@
 import tensorflow as tf
+import numpy as np
 
 
 def preprocess_mnist_tfds(image, label=None):
+    # reshape and upsample to 3 channel for transfer learning models
+    # ... for when no channel information is present
+    if len(image.shape) != 3:
+        image = np.dstack((image, image, image))
+    # ... for when channel is only 1 dimension
     if image.shape[2] == 1:
-        # reshape and upsample to 3 channel for transfer learning models
         image = tf.image.grayscale_to_rgb(image)
     # normalize pixel values
     image = tf.cast(image, tf.float32) / 255.
