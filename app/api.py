@@ -2,6 +2,8 @@ import numpy as np
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from typing import List
+from io import BytesIO
+from PIL import Image
 from pydantic import BaseModel, ValidationError, validator
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
 from app.ml.model import Model, get_model
@@ -29,9 +31,12 @@ class PredictResponse(BaseModel):
 @app.post("/predict",
           description="Predict MNIST image")
 async def predict(file: UploadFile = File(...), model: Model = Depends(get_model)):
-    file.file
-    X = mpimg.imread(file.file)
-    y_pred = model.predict_single_image(image=X)
+    extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    if not extension:
+        return "Image must be jpg or png format."
+    await file.read()
+    image = np.array(Image.open(file.file))
+    y_pred = model.predict_single_image(image=image)
     print(y_pred)
     result = PredictResponse(data=y_pred.tolist())
 
