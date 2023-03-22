@@ -1,5 +1,5 @@
 # thin-ML-deployment
-Thin deployment using FastAPI and Docker for a tensorflow transfer learning application on MNIST dataset. Can easily be configured for any type of ML deployment.
+Thin deployment using FastAPI and Docker for a tensorflow transfer learning application on MNIST dataset. Can be easily configured for any type of machine learning model deployment.
 
 ![](/docs/architecture.png)
 
