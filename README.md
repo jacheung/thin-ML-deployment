@@ -1,6 +1,9 @@
 # thin-ML-deployment
-Template for quickly deploying a ML endpoint 
+Thin deployment using FastAPI and Docker for a tensorflow transfer learning application on MNIST dataset. Can easily be configured for any type of ML deployment.
 
+![](/docs/architecture.png)
+
+## Local build  
 deploy FastAPI endpoint via:  
 ```
 cd thin-ML-deployment  
