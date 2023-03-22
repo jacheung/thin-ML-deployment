@@ -35,7 +35,7 @@ docker run -p 8000:8000 thin-ml-deployment
 ```
 2a. (Optional) Enter the docker image
 ```
-docker run -it --entrypoint /bin/bash
+docker run -it --entrypoint /bin/bash thin-ml-deployment
 ```
 
 3. Test the endpoint via curl outside or inside (if 2a) the docker image:
