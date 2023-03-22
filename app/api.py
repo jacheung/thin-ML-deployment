@@ -24,7 +24,7 @@ class PredictResponse(BaseModel):
 
 
 @route.post("/predict",
-          description="Predict MNIST image")
+            description="Predict MNIST image")
 async def predict(file: UploadFile = File(...), model: Model = Depends(get_model)):
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
     if not extension:

@@ -22,3 +22,25 @@ filename = f'<test_image_file_path>'
 file = {'file': open(filename, 'rb'}
 resp = requests.post(url=url, files=file)
 ```
+
+## Docker deployment 
+1. Build the docker image 
+``` 
+cd thin-ML-deployment
+docker build --file Dockerfile --tag thin-ml-deployment . 
+```
+2. Run the docker image
+```
+docker run -p 8000:8000 thin-ml-deployment
+```
+2a. (Optional) Enter the docker image
+```
+docker run -it --entrypoint /bin/bash
+```
+
+3. Test the endpoint via curl outside or inside (if 2a) the docker image:
+```
+curl \  
+-F "file=@<test_image_file_path>" \  
+http://0.0.0.0:8000/predict
+```
