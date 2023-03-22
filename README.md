@@ -17,7 +17,7 @@ curl \
 http://127.0.0.1:8000/predict  
 ```
 
-test FastAPI endpoing via python:  
+test FastAPI endpoint via python:  
 ```
 #Python
 url = "http://127.0.0.1:8000/predict"
@@ -41,7 +41,7 @@ docker run -p 8000:8000 thin-ml-deployment
 docker run -it --entrypoint /bin/bash thin-ml-deployment
 ```
 
-3. Test the endpoint via curl outside or inside (if 2a) the docker image:
+3. Test the endpoint via curl:
 ```
 curl \  
 -F "file=@<test_image_file_path>" \  
