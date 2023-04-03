@@ -3,6 +3,9 @@ Thin deployment using FastAPI and Docker for a tensorflow transfer learning appl
 
 ![](/docs/architecture.png)
 
+## Inference workflow
+![](/docs/workflow.png)
+
 ## Local build  
 deploy FastAPI endpoint via:  
 ```
@@ -34,7 +37,7 @@ docker build --file Dockerfile --tag thin-ml-deployment .
 ```
 2. Run the docker image
 ```
-docker run -p 8000:8000 thin-ml-deployment
+docker run -p 8000:8000 --name thin-ml-deployment
 ```
 2a. (Optional) Enter the docker image
 ```
