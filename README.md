@@ -1,12 +1,21 @@
 # thin-ML-deployment
 Thin deployment using FastAPI and Docker for a tensorflow transfer learning application on MNIST dataset. Can be easily configured for any type of machine learning model deployment.
 
-![](/docs/architecture.png)
+This repository is part 1 of a series of templates for stepping up a POC deployment to one that is scalable in production. This part introduces:
+1. FastAPI for building an inference point 
+2. Abstracting out functions for best practices
 
-## Inference workflow
-![](/docs/workflow.png)
+## Background
+We'll be performing transfer learning on the MNIST dataset to demo the tools used in this POC level workflow. The architecture diagram below will provide a high level view of what we'll be building.
+![](/docs/architecture-poc.png)
 
-## Local build  
+## Usage
+
+There are two ways to deploy an endpoint:
+1. Local build using the CLI 
+2. Docker deployment
+
+#### 1. Local build
 deploy FastAPI endpoint via:  
 ```
 cd thin-ML-deployment  
@@ -29,7 +38,7 @@ file = {'file': open(filename, 'rb'}
 resp = requests.post(url=url, files=file)
 ```
 
-## Docker deployment 
+#### 2. Docker deployment 
 1. Build the docker image 
 ``` 
 cd thin-ML-deployment
