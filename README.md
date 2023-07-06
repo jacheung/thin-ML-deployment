@@ -1,4 +1,4 @@
-# thin-ML-deployment
+# POC ML Deployment
 Thin deployment using FastAPI and Docker for a tensorflow transfer learning application on MNIST dataset. Can be easily configured for any type of machine learning model deployment.
 
 This repository is part 1 of a series of templates for stepping up a POC deployment to one that is scalable in production. This part introduces:
