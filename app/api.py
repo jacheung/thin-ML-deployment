@@ -1,23 +1,10 @@
 import numpy as np
 from PIL import Image
-from pydantic import BaseModel, ValidationError, validator
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
+from pydantic import BaseModel
+from fastapi import FastAPI, File, UploadFile, Depends
 from app.ml.model import Model, get_model
 
 route = FastAPI()
-
-
-# class PredictRequest(BaseModel):
-#     data: int
-#
-#     @validator("data")
-#     def check_dimensionality(cls, v):
-#         for point in v:
-#             if len(point) != n_features:
-#                 raise ValueError(f"Each data point must contain {n_features} features")
-#
-#         return v
-
 
 class PredictResponse(BaseModel):
     prediction: int
@@ -37,5 +24,3 @@ async def predict(file: UploadFile = File(...), model: Model = Depends(get_model
     print(y_pred)
 
     return result
-
-
