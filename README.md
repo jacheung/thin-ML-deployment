@@ -29,7 +29,7 @@ pip install requirements.txt
 To train a model (assuming one doesn't exist already in app/ml/img_classifier):
 ```
 source <venv/path>/bin/activate
-cd production-ML-deployment
+cd thin-ML-deployment
 python3 app/ml/model.py 
 ```
 
