@@ -2,7 +2,7 @@
  A viable product is defined as any deployed application that automates some process or improves the workflow for a human-in-the-loop. As a data scientist, it's easy to scrap together a notebook and toss it over the fence to data/machine learning engineers to productize. This line of thinking creates a large start-up cost for any POC to take off and become a viable product. This series of repositories will create a baseline process for transition but feel free to edit it with your desired toolsets. 
 
 This repository is part 1 of a series of templates for stepping up a POC deployment to one that is scalable in production. This part introduces:
-1. Abstracting out functions from notebooks for best practices
+1. Abstracting out functions from notebooks
 2. Deploying an inference point via FastAPI (local + docker deployment) 
 
 ![](/docs/vision-poc.png)
